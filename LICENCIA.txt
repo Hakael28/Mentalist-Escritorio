@@ -1,0 +1,26 @@
+                     LICENCIA DE USO NO COMERCIAL – PROYECTO MENTALIST
+
+Este software fue desarrollado por Jorge Daniel Monroy González y Jhon Fredy Peña como parte de un proyecto académico del SENA en el año 2025.
+
+Se autoriza la copia, modificación, uso y distribución de este software y sus archivos **únicamente con fines académicos, educativos o personales**.
+
+**Está estrictamente prohibido su uso con fines comerciales** sin la autorización expresa y por escrito del autor.
+
+Esto incluye, pero no se limita a:
+- Uso en aplicaciones clínicas o institucionales con fines de lucro.
+- Venta directa o indirecta del software o derivados del mismo.
+- Incorporación del código en productos comerciales.
+
+Para solicitar una licencia comercial o aclarar dudas sobre las condiciones de uso, puede contactar al autor:
+
+Autores: Jorge Daniel Monroy González y Jhon Fredy Peña  
+Correo: <jisaw2804@gmail.com>
+
+Esta licencia entra en vigor desde el momento en que se accede o utiliza este software.
+
+Año: 2025
+
+---
+
+Licencia recomendada: Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)  
+Texto completo: https://creativecommons.org/licenses/by-nc/4.0/deed.es
