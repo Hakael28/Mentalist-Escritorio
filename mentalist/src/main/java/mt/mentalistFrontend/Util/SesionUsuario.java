@@ -20,4 +20,8 @@ public class SesionUsuario {
         rol = null;
         nombre = null;
     }
+
+    public static Object getToken() {
+        return token;
+    }
 }
