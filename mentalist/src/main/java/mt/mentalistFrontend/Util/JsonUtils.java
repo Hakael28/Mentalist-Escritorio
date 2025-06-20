@@ -3,6 +3,7 @@ package mt.mentalistFrontend.Util;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import mt.mentalistFrontend.Modelo.DTO.*;
+import mt.mentalistFrontend.Modelo.DTO.Basicas.*;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -62,4 +63,5 @@ public class JsonUtils {
         return gson.fromJson(json, tipoLista);
     }
 
-    }
+
+}
