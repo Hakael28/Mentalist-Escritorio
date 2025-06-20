@@ -2,32 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package mt.mentalistFrontend.UI.Paneles.PanelMedico;
+package mt.mentalistFrontend.UI.Paneles.PanelMedico.Basicas;
 
+import mt.mentalistFrontend.UI.Paneles.PanelMedico.Caso.BuscarCasoPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
-import mt.mentalistFrontend.UI.Paneles.PanelMedico.Paciente.BuscarPacientePanel;
-import mt.mentalistFrontend.UI.Paneles.PanelMedico.Paciente.DatoPacientePanel;
-import mt.mentalistFrontend.UI.Paneles.PanelMedico.Paciente.ListarPacientes;
+import mt.mentalistFrontend.UI.Paneles.PanelMedico.Caso.InfoPaciente;
+import mt.mentalistFrontend.UI.Paneles.PanelMedico.Caso.ListarCasos;
 
-public class PacientePanel extends javax.swing.JPanel {
+public class CasoPanel extends javax.swing.JPanel {
 
-
-    public PacientePanel() {
+     
+    public CasoPanel() {
         initComponents();
         initStyles();
-
     }
 
     private void initStyles() {
-        TItulo.putClientProperty("FlatLaf.style", "font: 20 bold $h4.font");
-        TItulo.setForeground(new Color(55, 71, 79));
         RegistrarBTN.putClientProperty("FlatLaf.style", "font: 13 $h4.font");
         RegistrarBTN.setForeground(Color.white);
-
+        
         BuscarBTN.putClientProperty("FlatLaf.style", "font: 13 $h4.font");
         BuscarBTN.setForeground(Color.white);
+        
         ListarBTN.putClientProperty("FlatLaf.style", "font: 13 $h4.font");
         ListarBTN.setForeground(Color.white);
     }
@@ -43,11 +41,13 @@ public class PacientePanel extends javax.swing.JPanel {
         Bg.repaint();
     }
 
-    ;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jTextField1 = new javax.swing.JTextField();
+        jMenuItem1 = new javax.swing.JMenuItem();
         Bg = new javax.swing.JPanel();
         RegistrarBTN = new javax.swing.JButton();
         BuscarBTN = new javax.swing.JButton();
@@ -58,13 +58,16 @@ public class PacientePanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         TItulo = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(245, 245, 240));
+        jTextField1.setText("jTextField1");
+
+        jMenuItem1.setText("jMenuItem1");
+
+        setPreferredSize(new java.awt.Dimension(750, 400));
 
         Bg.setBackground(new java.awt.Color(245, 245, 240));
 
         RegistrarBTN.setBackground(new java.awt.Color(17, 129, 133));
-        RegistrarBTN.setText("Registar Paciente");
-        RegistrarBTN.setPreferredSize(new java.awt.Dimension(101, 24));
+        RegistrarBTN.setText("Registar Caso");
         RegistrarBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegistrarBTNActionPerformed(evt);
@@ -72,8 +75,8 @@ public class PacientePanel extends javax.swing.JPanel {
         });
 
         BuscarBTN.setBackground(new java.awt.Color(17, 129, 133));
-        BuscarBTN.setText("Buscar Paciente");
-        BuscarBTN.setPreferredSize(new java.awt.Dimension(101, 24));
+        BuscarBTN.setText("Buscar Caso");
+        BuscarBTN.setPreferredSize(new java.awt.Dimension(10, 24));
         BuscarBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarBTNActionPerformed(evt);
@@ -81,7 +84,7 @@ public class PacientePanel extends javax.swing.JPanel {
         });
 
         ListarBTN.setBackground(new java.awt.Color(17, 129, 133));
-        ListarBTN.setText("Listar Pacientes");
+        ListarBTN.setText("Listar Casos");
         ListarBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ListarBTNActionPerformed(evt);
@@ -89,7 +92,7 @@ public class PacientePanel extends javax.swing.JPanel {
         });
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/BuscarPaciente.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/buscar.png"))); // NOI18N
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -97,14 +100,14 @@ public class PacientePanel extends javax.swing.JPanel {
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/regisPaciente.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Registra.png"))); // NOI18N
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jSeparator1.setBackground(new java.awt.Color(27, 203, 209));
         jSeparator1.setForeground(new java.awt.Color(27, 203, 209));
 
         TItulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TItulo.setText("Opciones Paciente");
+        TItulo.setText("Opciones Caso");
 
         javax.swing.GroupLayout BgLayout = new javax.swing.GroupLayout(Bg);
         Bg.setLayout(BgLayout);
@@ -139,18 +142,18 @@ public class PacientePanel extends javax.swing.JPanel {
                 .addComponent(TItulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(74, 74, 74)
                 .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(RegistrarBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BuscarBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ListarBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BuscarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ListarBTN)
+                    .addComponent(RegistrarBTN))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -161,22 +164,20 @@ public class PacientePanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 50, Short.MAX_VALUE))
+            .addComponent(Bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegistrarBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarBTNActionPerformed
-        ShowJPanel(new DatoPacientePanel());
+        ShowJPanel(new InfoPaciente());
     }//GEN-LAST:event_RegistrarBTNActionPerformed
 
     private void BuscarBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarBTNActionPerformed
-        ShowJPanel(new BuscarPacientePanel());
+        ShowJPanel(new BuscarCasoPanel());
     }//GEN-LAST:event_BuscarBTNActionPerformed
 
     private void ListarBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarBTNActionPerformed
-        ShowJPanel(new ListarPacientes());
+         ShowJPanel(new ListarCasos());
     }//GEN-LAST:event_ListarBTNActionPerformed
 
 
@@ -189,6 +190,9 @@ public class PacientePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

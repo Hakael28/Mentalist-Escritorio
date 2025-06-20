@@ -2,14 +2,16 @@ package mt.mentalistFrontend.UI.Ventanas;
 
 import java.awt.Color;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import mt.mentalistFrontend.Cliente.AuthCliente;
+import mt.mentalistFrontend.Modelo.DTO.Seguridad.LoginRequestDTO;
+import mt.mentalistFrontend.Modelo.DTO.Seguridad.LoginResponseDTO;
+import mt.mentalistFrontend.Util.AlertaUtils;
+import mt.mentalistFrontend.Util.SesionUsuario;
 
-@Component
+
 public class Ingreso extends javax.swing.JFrame {
     int xMouse, yMouse;
 
-    @Autowired
     public Ingreso() {
         initComponents(); // Método que inicializa la UI
         InitStyles();
@@ -222,7 +224,8 @@ public class Ingreso extends javax.swing.JFrame {
     }//GEN-LAST:event_CerrarBTNMouseExited
 
     private void CerrarBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarBTNMouseClicked
-        System.exit(0);
+        if(AlertaUtils.confirmar("¿Estás segur@ de que desear salir?")){
+        System.exit(0);}
     }//GEN-LAST:event_CerrarBTNMouseClicked
 
     private void IngresoBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IngresoBTNMouseEntered
@@ -235,7 +238,41 @@ public class Ingreso extends javax.swing.JFrame {
     }//GEN-LAST:event_IngresoBTNMouseExited
 
     private void IngresoBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresoBTNActionPerformed
-    }//GEN-LAST:event_IngresoBTNActionPerformed
+    String usuario = IngresoUsuario.getText().trim();
+    String contrasena = new String(IngresoContrasena.getPassword()).trim();
+
+    if (usuario.isEmpty() || contrasena.isEmpty()){
+        AlertaUtils.mostrarAdvertencia("Por favor complete todos los campos.");
+        return;
+    }
+
+    try {
+        LoginRequestDTO loginRequest= new LoginRequestDTO();
+        loginRequest.setUsuario(usuario);
+        loginRequest.setContrasena(contrasena);
+
+        LoginResponseDTO loginResponse = AuthCliente.login(loginRequest);
+
+        //Guardar sesion
+        SesionUsuario.setToken(loginResponse.getToken());
+        SesionUsuario.setRol(loginResponse.getRol());
+        SesionUsuario.setIdUsuario(loginResponse.getIdUsuario());
+
+        AlertaUtils.mostrarExito("Inicio de sesion exitoso. Bienvenido, "+loginResponse.getRol());
+
+        //Abrir ventana segun rol
+        if("ADMIN".equals(loginResponse.getRol())){
+            new mt.mentalistFrontend.UI.Ventanas.PanelAdministrador().setVisible(true);
+        } else if ("MEDICO".equals(loginResponse.getRol())) {
+            new mt.mentalistFrontend.UI.Ventanas.PanelMedico().setVisible(true);
+        }
+        this.dispose();
+
+    }catch (Exception e){
+        e.printStackTrace();
+        AlertaUtils.mostrarError("Error en el inicio de sesion: "+ e.getMessage());
+    }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

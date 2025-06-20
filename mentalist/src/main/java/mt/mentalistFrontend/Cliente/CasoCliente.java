@@ -1,12 +1,11 @@
 package mt.mentalistFrontend.Cliente;
 
-import mt.mentalistFrontend.Modelo.DTO.CasoDTO;
+import mt.mentalistFrontend.Modelo.DTO.Basicas.CasoDTO;
 import mt.mentalistFrontend.Util.JsonUtils;
 import mt.mentalistFrontend.Util.SesionUsuario;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;

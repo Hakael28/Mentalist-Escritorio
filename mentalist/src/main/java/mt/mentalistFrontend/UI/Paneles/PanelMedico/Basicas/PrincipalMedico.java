@@ -1,4 +1,4 @@
-package mt.mentalistFrontend.UI.Paneles.PanelMedico;
+package mt.mentalistFrontend.UI.Paneles.PanelMedico.Basicas;
 
 import java.awt.Color;
 

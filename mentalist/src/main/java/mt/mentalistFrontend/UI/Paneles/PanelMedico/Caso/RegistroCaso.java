@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package mt.mentalistFrontend.UI.Paneles.PanelMedico.Caso;
 
-import mt.mentalistFrontend.UI.Paneles.PanelMedico.CasoPanel;
+import mt.mentalistFrontend.UI.Paneles.PanelMedico.Basicas.CasoPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;

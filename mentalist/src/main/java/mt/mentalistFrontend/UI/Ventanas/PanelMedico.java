@@ -2,9 +2,9 @@ package mt.mentalistFrontend.UI.Ventanas;
 
 import mt.mentalistFrontend.UI.Paneles.General.PerfilPanel;
 import mt.mentalistFrontend.UI.Paneles.General.ReportePanel;
-import mt.mentalistFrontend.UI.Paneles.PanelMedico.PacientePanel;
-import mt.mentalistFrontend.UI.Paneles.PanelMedico.CasoPanel;
-import mt.mentalistFrontend.UI.Paneles.PanelMedico.PrincipalMedico;
+import mt.mentalistFrontend.UI.Paneles.PanelMedico.Basicas.PacientePanel;
+import mt.mentalistFrontend.UI.Paneles.PanelMedico.Basicas.CasoPanel;
+import mt.mentalistFrontend.UI.Paneles.PanelMedico.Basicas.PrincipalMedico;
 import java.awt.BorderLayout;
 
 

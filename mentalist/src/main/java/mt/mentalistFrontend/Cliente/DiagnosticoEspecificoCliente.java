@@ -1,7 +1,7 @@
 package mt.mentalistFrontend.Cliente;
 
 
-import mt.mentalistFrontend.Modelo.DTO.DiagnosticoEspecificoDTO;
+import mt.mentalistFrontend.Modelo.DTO.Basicas.DiagnosticoEspecificoDTO;
 import mt.mentalistFrontend.Util.JsonUtils;
 import mt.mentalistFrontend.Util.SesionUsuario;
 

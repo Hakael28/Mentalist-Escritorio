@@ -1,4 +1,4 @@
-package mt.mentalistFrontend.UI.Paneles.PanelAdministrador;
+package mt.mentalistFrontend.UI.Paneles.PanelAdministrador.Basicas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

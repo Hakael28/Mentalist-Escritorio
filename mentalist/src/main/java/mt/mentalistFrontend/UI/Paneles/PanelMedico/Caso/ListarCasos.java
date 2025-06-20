@@ -2,6 +2,7 @@ package mt.mentalistFrontend.UI.Paneles.PanelMedico.Caso;
 
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
+
 public class ListarCasos extends javax.swing.JPanel {
 
     private DefaultTableModel modelo;

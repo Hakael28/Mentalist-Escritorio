@@ -3,10 +3,6 @@ package mt.mentalistFrontend.UI.Paneles.PanelMedico.Paciente;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author jisaw
- */
 public class ListarPacientes extends javax.swing.JPanel {
 
     private DefaultTableModel modelo;

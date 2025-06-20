@@ -1,6 +1,5 @@
-package mt.mentalistFrontend.Modelo.DTO;
+package mt.mentalistFrontend.Modelo.DTO.Basicas;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -25,8 +24,7 @@ public class UsuarioDTO {
 
     @NotBlank(message = "La contraseña es obligatoria")
     @Size(min = 8, max = 100, message = "La contraseña debe tener entre 6 y 100 caracteres")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)//Solo se permite escribirla, no se serializa en respuestas
-    private String contrasena;
+    private transient String contrasena;
 
     @NotBlank(message = "El correo del usuario es obligatorio")
     private String correo;

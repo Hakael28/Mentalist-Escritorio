@@ -19,4 +19,15 @@ public class AlertaUtils {
     public static void mostrarExito(String mensaje){
         JOptionPane.showMessageDialog(null,mensaje,"Exito", JOptionPane.PLAIN_MESSAGE);
     }
+
+    public static boolean confirmar(String mensaje) {
+        int opcion = JOptionPane.showConfirmDialog(
+                null,
+                mensaje,
+                "Confirmación",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+        return opcion == JOptionPane.YES_OPTION;
+    }
 }

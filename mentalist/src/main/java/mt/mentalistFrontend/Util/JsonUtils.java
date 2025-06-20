@@ -1,11 +1,12 @@
 package mt.mentalistFrontend.Util;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import mt.mentalistFrontend.Modelo.DTO.CasoDTO;
-import mt.mentalistFrontend.Modelo.DTO.DiagnosticoEspecificoDTO;
+import mt.mentalistFrontend.Modelo.DTO.Basicas.CasoDTO;
+import mt.mentalistFrontend.Modelo.DTO.Basicas.DiagnosticoEspecificoDTO;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Map;
 
 public class JsonUtils {
 
@@ -29,6 +30,10 @@ public class JsonUtils {
         Type tipoLista = new TypeToken<List<DiagnosticoEspecificoDTO>>() {
         }.getType();
         return gson.fromJson(json, tipoLista);
+    }
+
+    public static List<Map<String, String>> fromJsonListMap(String string) {
+        return null;
     }
 }
 

@@ -1,9 +1,9 @@
 package mt.mentalistFrontend.UI.Ventanas;
 
-import mt.mentalistFrontend.UI.Paneles.PanelAdministrador.EstadisticaPanel;
-import mt.mentalistFrontend.UI.Paneles.PanelAdministrador.ReportesPanel;
+import mt.mentalistFrontend.UI.Paneles.PanelAdministrador.Basicas.EstadisticaPanel;
+import mt.mentalistFrontend.UI.Paneles.PanelAdministrador.Basicas.ReportesPanel;
 import mt.mentalistFrontend.UI.Paneles.General.PerfilPanel;
-import mt.mentalistFrontend.UI.Paneles.PanelAdministrador.PrincipalAdministrador;
+import mt.mentalistFrontend.UI.Paneles.PanelAdministrador.Basicas.PrincipalAdministrador;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,9 +13,8 @@ import java.util.Locale;
 import javax.swing.JPanel;
 
 
-import org.springframework.stereotype.Component;
+import mt.mentalistFrontend.UI.Paneles.PanelAdministrador.Basicas.UsuariosPanel;
 
-@Component
 public class PanelAdministrador extends javax.swing.JFrame {
 
 
@@ -342,11 +341,11 @@ public class PanelAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirBTNActionPerformed
 
     private void UsuarioBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioBTNActionPerformed
+        ShowJPanel(new UsuariosPanel());
     }//GEN-LAST:event_UsuarioBTNActionPerformed
 
     private void PerfilBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilBTNActionPerformed
         ShowJPanel(new PerfilPanel());
-
     }//GEN-LAST:event_PerfilBTNActionPerformed
 
     private void ReportesBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportesBTNActionPerformed
