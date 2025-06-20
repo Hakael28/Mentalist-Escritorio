@@ -1,37 +1,38 @@
 package mt.mentalistFrontend.Cliente;
 
-import mt.mentalistFrontend.Modelo.DTO.Basicas.CasoDTO;
+import mt.mentalistFrontend.Modelo.DTO.CursoVidaDTO;
 import mt.mentalistFrontend.Util.JsonUtils;
 import mt.mentalistFrontend.Util.SesionUsuario;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-public class CasoCliente {
+public class CursoVidaCliente {
+    private static final String Base_URL = "//http://localhost:8084/mentalist-web/basicos/cursoVida";
 
-    private static final String Base_URL = "http://localhost:8084/mentalist-web/basicos/casos";
-
-
-    public static List<CasoDTO> obtenerCasos() throws Exception {
+    public static List<CursoVidaDTO> obtenerCursoVida() throws Exception {
         URL url = new URL(Base_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
-        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
+        conn.setRequestProperty("Autorizacion", "Bearer" + SesionUsuario.getToken());
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        BufferedReader in = new BufferedReader((new InputStreamReader(conn.getInputStream())));
         StringBuilder respuesta = new StringBuilder();
-        String inputLIine;
-        while ((inputLIine = in.readLine()) != null) {
-            respuesta.append(inputLIine);
-        }
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) ;
+        respuesta.append(inputLine);
+
         in.close();
-        return JsonUtils.fromJsonListCasoDTO(respuesta.toString(), CasoDTO.class);
+
+        return JsonUtils.fromJsonListCursoVidaDTO(respuesta.toString());
+
     }
 
-    public static CasoDTO agregarCaso(CasoDTO dto) throws Exception {
+    public static CursoVidaDTO agreagarCursoVida(CursoVidaDTO dto) throws Exception {
         URL url = new URL(Base_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
@@ -44,6 +45,7 @@ public class CasoCliente {
         os.flush();
         os.close();
 
+
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder respuesta = new StringBuilder();
         String inputLine;
@@ -52,11 +54,12 @@ public class CasoCliente {
         }
         in.close();
 
-        return JsonUtils.fromJson(respuesta.toString(), CasoDTO.class);
+        return (CursoVidaDTO) JsonUtils.fromJsonListCursoVidaDTO(respuesta.toString());
     }
 
-    public static CasoDTO guardarCasoPorId(int idCaso) throws Exception {
-        URL url = new URL(Base_URL + "/" + idCaso);
+    public static CursoVidaDTO GuardarCursoVidaPorId(int idCursoVida) throws Exception {
+
+        URL url = new URL(Base_URL + "/" + idCursoVida);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Autorization", "Bearer" + SesionUsuario.getToken());
@@ -64,19 +67,20 @@ public class CasoCliente {
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder respuesta = new StringBuilder();
         String inputLine;
-        while ((inputLine = in.readLine()) != null) {
+
+        while ((inputLine = in.readLine() )!= null) {
             respuesta.append(inputLine);
         }
         in.close();
+        return (CursoVidaDTO) JsonUtils. fromJsonListCursoVidaDTO(respuesta.toString());
 
-        return JsonUtils.fromJson(respuesta.toString(), CasoDTO.class);
     }
+     public  static  void  eliminarCursoVida(int idCursoVida) throws  Exception {
+       URL url = new URL(Base_URL+"/" + idCursoVida);
+       HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+       conn.setRequestMethod("DELETE");
+       conn.setRequestProperty("Autorizaion", "Bearer" + SesionUsuario.getToken());
+       conn.getInputStream().close();
+     }
 
-    public static void eliminarCaso(int idCaso) throws Exception {
-        URL url = new URL(Base_URL + "/" + idCaso);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("DELETE");
-        conn.setRequestProperty("Autorizacion", "Bearber" + SesionUsuario.getToken());
-        conn.getInputStream().close();
-    }
 }
