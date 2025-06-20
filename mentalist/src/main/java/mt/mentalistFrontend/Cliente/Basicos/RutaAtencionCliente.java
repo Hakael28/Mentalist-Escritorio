@@ -1,41 +1,42 @@
-package mt.mentalistFrontend.Cliente;
+package mt.mentalistFrontend.Cliente.Basicos;
 
-import mt.mentalistFrontend.Modelo.DTO.Basicas.CasoDTO;
+
+import mt.mentalistFrontend.Modelo.DTO.Basicas.RutaAtencionDTO;
 import mt.mentalistFrontend.Util.JsonUtils;
 import mt.mentalistFrontend.Util.SesionUsuario;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-public class CasoCliente {
+public class RutaAtencionCliente {
+    private static final String BASE_URL = "http://localhost:8084/mentalist-web/basicos/rutas";
 
-    private static final String Base_URL = "http://localhost:8084/mentalist-web/basicos/casos";
-
-
-    public static List<CasoDTO> obtenerCasos() throws Exception {
-        URL url = new URL(Base_URL);
+    public static List<RutaAtencionDTO> obtenerRutaAtencion() throws Exception {
+        URL url = new URL(BASE_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
 
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder respuesta = new StringBuilder();
-        String inputLIine;
-        while ((inputLIine = in.readLine()) != null) {
-            respuesta.append(inputLIine);
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            respuesta.append(inputLine);
         }
         in.close();
-        return JsonUtils.fromJsonListCasoDTO(respuesta.toString(), CasoDTO.class);
+
+        return JsonUtils.fromJsonListRutaAtencionDTO(respuesta.toString());
     }
 
-    public static CasoDTO agregarCaso(CasoDTO dto) throws Exception {
-        URL url = new URL(Base_URL);
+    public static RutaAtencionDTO guardarRutaAtencion(RutaAtencionDTO dto) throws Exception {
+        URL url = new URL(BASE_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
-        conn.setRequestProperty("Autorization", "Bearer" + SesionUsuario.getToken());
+        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setDoOutput(true);
 
@@ -52,14 +53,14 @@ public class CasoCliente {
         }
         in.close();
 
-        return JsonUtils.fromJson(respuesta.toString(), CasoDTO.class);
+        return JsonUtils.fromJson(respuesta.toString(), RutaAtencionDTO.class);
     }
 
-    public static CasoDTO guardarCasoPorId(int idCaso) throws Exception {
-        URL url = new URL(Base_URL + "/" + idCaso);
+    public static RutaAtencionDTO buscarRutaAtencionPorId(int idRutaAtencion) throws Exception {
+        URL url = new URL(BASE_URL + "/" + idRutaAtencion);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
-        conn.setRequestProperty("Autorization", "Bearer" + SesionUsuario.getToken());
+        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
 
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder respuesta = new StringBuilder();
@@ -69,14 +70,14 @@ public class CasoCliente {
         }
         in.close();
 
-        return JsonUtils.fromJson(respuesta.toString(), CasoDTO.class);
+        return JsonUtils.fromJson(respuesta.toString(), RutaAtencionDTO.class);
     }
 
-    public static void eliminarCaso(int idCaso) throws Exception {
-        URL url = new URL(Base_URL + "/" + idCaso);
+    public static void eliminarRutaAtencionPorId(int idRutaAtencion) throws Exception {
+        URL url = new URL(BASE_URL + "/" + idRutaAtencion);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("DELETE");
-        conn.setRequestProperty("Autorizacion", "Bearber" + SesionUsuario.getToken());
+        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
         conn.getInputStream().close();
     }
 }

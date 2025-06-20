@@ -1,4 +1,4 @@
-package mt.mentalistFrontend.Cliente;
+package mt.mentalistFrontend.Cliente.Funciones.PDF;
 
 import mt.mentalistFrontend.Util.SesionUsuario;
 
@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class InformeCliente {
+public class ExportarInformeCliente {
 
     public static void descargarInformeCasoPDF(int idCaso, String rutaArchivo) throws Exception{
         URL url = new URL("http://localhost:8084/mentalist-web/basicos/InformeCaso/pdf/" + idCaso);

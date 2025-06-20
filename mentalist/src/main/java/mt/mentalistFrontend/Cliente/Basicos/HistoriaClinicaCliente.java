@@ -1,6 +1,6 @@
-package mt.mentalistFrontend.Cliente;
+package mt.mentalistFrontend.Cliente.Basicos;
 
-import mt.mentalistFrontend.Modelo.DTO.HistoriaClinicaDTO;
+import mt.mentalistFrontend.Modelo.DTO.Basicas.HistoriaClinicaDTO;
 import mt.mentalistFrontend.Util.JsonUtils;
 import mt.mentalistFrontend.Util.SesionUsuario;
 
@@ -18,7 +18,7 @@ public class HistoriaClinicaCliente {
         URL url = new URL(BASE_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
-        conn.setRequestProperty("Authorizacion", "Bearer " + SesionUsuario.getToken());
+        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
 
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder respuesta = new StringBuilder();
@@ -28,15 +28,15 @@ public class HistoriaClinicaCliente {
         }
         in.close();
 
-        return JsonUtils.fromJsonListHistoriaClinicaDTO(respuesta.toString(), HistoriaClinicaDTO.class);
+        return JsonUtils.fromJsonListHistoriaClinicaDTO(respuesta.toString());
     }
 
-    public static HistoriaClinicaDTO AgregarHistorias(HistoriaClinicaDTO dto) throws Exception {
+    public static HistoriaClinicaDTO agregarHistoria(HistoriaClinicaDTO dto) throws Exception {
         URL url = new URL(BASE_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
-        conn.setRequestProperty("Autorizacion", "Bearer" + SesionUsuario.getToken());
-        conn.setRequestProperty("Contnet-Tyoe", "applicartion/json");
+        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
+        conn.setRequestProperty("Content-Type", "application/json");
         conn.setDoOutput(true);
 
         OutputStream os = conn.getOutputStream();
@@ -46,37 +46,37 @@ public class HistoriaClinicaCliente {
 
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder respuesta = new StringBuilder();
-        String inputline;
-        while ((inputline = in.readLine()) != null) {
-            respuesta.append(inputline);
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            respuesta.append(inputLine);
         }
         in.close();
 
         return JsonUtils.fromJson(respuesta.toString(), HistoriaClinicaDTO.class);
     }
 
-    public static HistoriaClinicaDTO buscarHistoriaPorId(HistoriaClinicaDTO dto) throws Exception {
-        URL url = new URL(BASE_URL + "/" + buscarHistoriaPorId(dto);
+    public static HistoriaClinicaDTO buscarHistoriaPorId(int idHistorialClinica) throws Exception {
+        URL url = new URL(BASE_URL + "/" + idHistorialClinica);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
-        conn.setRequestProperty("Autorizacion", "Bearer" + SesionUsuario.getToken());
+        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
 
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder respuesta = new StringBuilder();
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
             respuesta.append(inputLine);
-
-            return JsonUtils.fromJson(respuesta.toString(), HistoriaClinicaDTO.class);
         }
-        public static void eliminarHistoria int HistoriaClinicaDTO)throw Exception {
-            URL url1 = new URL(BASE_URL + "/" + HistoriaClinicaDTO);
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("DELETE");
-            conn.setRequestProperty("Autorizacion", "Bearer" + SesionUsuario.getToken());
-            conn.getInputStream().close();
-        }
+        in.close();
 
+        return JsonUtils.fromJson(respuesta.toString(), HistoriaClinicaDTO.class);
+    }
 
+    public static void eliminarHistoria(int idHistorialClinica) throws Exception {
+        URL url = new URL(BASE_URL + "/" + idHistorialClinica);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("DELETE");
+        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
+        conn.getInputStream().close();
     }
 }

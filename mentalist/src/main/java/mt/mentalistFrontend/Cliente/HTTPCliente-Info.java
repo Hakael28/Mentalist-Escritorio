@@ -15,7 +15,7 @@ package mt.mentalistFrontend.Cliente;
  * - CursoVidaCliente.java                 → Curso de vida del paciente
  * - AreaOcurrenciaCliente.java            → Área donde ocurre el caso
  * - EapbCliente.java                      → Entidades administradoras de planes
- * - InformeCliente.java                   → Generación y consulta de informes
+ * - ExportarInformeCliente.java                   → Generación y consulta de informes
  * - Cie11Cliente.java                     → Consulta diagnósticos desde CIE-11
  * - EstadisticaCliente.java               → Estadísticas y visualizaciones (opcional)
  */

@@ -1,4 +1,4 @@
-package mt.mentalistFrontend.Cliente;
+package mt.mentalistFrontend.Cliente.Funciones.API;
 
 import mt.mentalistFrontend.Util.JsonUtils;
 import mt.mentalistFrontend.Util.SesionUsuario;

@@ -2,7 +2,7 @@ package mt.mentalistFrontend.UI.Ventanas;
 
 import java.awt.Color;
 
-import mt.mentalistFrontend.Cliente.AuthCliente;
+import mt.mentalistFrontend.Cliente.Seguridad.AuthCliente;
 import mt.mentalistFrontend.Modelo.DTO.Seguridad.LoginRequestDTO;
 import mt.mentalistFrontend.Modelo.DTO.Seguridad.LoginResponseDTO;
 import mt.mentalistFrontend.Util.AlertaUtils;

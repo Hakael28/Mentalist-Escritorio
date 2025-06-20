@@ -1,6 +1,6 @@
-package mt.mentalistFrontend.Cliente;
+package mt.mentalistFrontend.Cliente.Basicos;
 
-import mt.mentalistFrontend.Modelo.DTO.CursoVidaDTO;
+import mt.mentalistFrontend.Modelo.DTO.Basicas.CursoVidaDTO;
 import mt.mentalistFrontend.Util.JsonUtils;
 import mt.mentalistFrontend.Util.SesionUsuario;
 
@@ -18,14 +18,14 @@ public class CursoVidaCliente {
         URL url = new URL(Base_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
-        conn.setRequestProperty("Autorizacion", "Bearer" + SesionUsuario.getToken());
+        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
 
         BufferedReader in = new BufferedReader((new InputStreamReader(conn.getInputStream())));
         StringBuilder respuesta = new StringBuilder();
         String inputLine;
-        while ((inputLine = in.readLine()) != null) ;
-        respuesta.append(inputLine);
-
+        while ((inputLine = in.readLine()) != null) {
+            respuesta.append(inputLine);
+        }
         in.close();
 
         return JsonUtils.fromJsonListCursoVidaDTO(respuesta.toString());
@@ -36,7 +36,7 @@ public class CursoVidaCliente {
         URL url = new URL(Base_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
-        conn.setRequestProperty("Autorization", "Bearer" + SesionUsuario.getToken());
+        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setDoOutput(true);
 
@@ -54,7 +54,7 @@ public class CursoVidaCliente {
         }
         in.close();
 
-        return (CursoVidaDTO) JsonUtils.fromJsonListCursoVidaDTO(respuesta.toString());
+        return JsonUtils.fromJson(respuesta.toString(), CursoVidaDTO.class);
     }
 
     public static CursoVidaDTO GuardarCursoVidaPorId(int idCursoVida) throws Exception {
@@ -62,24 +62,24 @@ public class CursoVidaCliente {
         URL url = new URL(Base_URL + "/" + idCursoVida);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
-        conn.setRequestProperty("Autorization", "Bearer" + SesionUsuario.getToken());
+        conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
 
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder respuesta = new StringBuilder();
         String inputLine;
 
-        while ((inputLine = in.readLine() )!= null) {
+        while ((inputLine = in.readLine()) != null) {
             respuesta.append(inputLine);
         }
         in.close();
-        return (CursoVidaDTO) JsonUtils. fromJsonListCursoVidaDTO(respuesta.toString());
+        return JsonUtils.fromJson(respuesta.toString(), CursoVidaDTO.class);
 
     }
      public  static  void  eliminarCursoVida(int idCursoVida) throws  Exception {
        URL url = new URL(Base_URL+"/" + idCursoVida);
        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
        conn.setRequestMethod("DELETE");
-       conn.setRequestProperty("Autorizaion", "Bearer" + SesionUsuario.getToken());
+         conn.setRequestProperty("Authorization", "Bearer " + SesionUsuario.getToken());
        conn.getInputStream().close();
      }
 

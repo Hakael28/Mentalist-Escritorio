@@ -1,4 +1,4 @@
-package mt.mentalistFrontend.Cliente;
+package mt.mentalistFrontend.Cliente.Seguridad;
 
 import mt.mentalistFrontend.Modelo.DTO.Seguridad.LoginRequestDTO;
 import mt.mentalistFrontend.Modelo.DTO.Seguridad.LoginResponseDTO;

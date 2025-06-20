@@ -12,21 +12,25 @@ public class JsonUtils {
 
     private static final Gson gson = new Gson();
 
+    // Serializar
     public static String toJson(Object objeto) {
         return gson.toJson(objeto);
     }
 
+    // Deserializar un solo objeto
     public static <T> T fromJson(String json, Class<T> clase) {
         return gson.fromJson(json, clase);
     }
 
-    public static List<CasoDTO> fromJsonListCasoDTO(String json, Class<CasoDTO> casoDTOClass) {
+    // Deserializar listas
+
+    public static List<CasoDTO> fromJsonListCasoDTO(String json) {
         Type tipoLista = new TypeToken<List<CasoDTO>>() {
         }.getType();
         return gson.fromJson(json, tipoLista);
     }
 
-    public static List<DiagnosticoEspecificoDTO> fromJsonListDiagnosticoDTO(String json, Class<DiagnosticoEspecificoDTO> diagnosticoEspecificoDTOClass) {
+    public static List<DiagnosticoEspecificoDTO> fromJsonListDiagnosticoDTO(String json) {
         Type tipoLista = new TypeToken<List<DiagnosticoEspecificoDTO>>() {
         }.getType();
         return gson.fromJson(json, tipoLista);
@@ -38,30 +42,46 @@ public class JsonUtils {
         return gson.fromJson(json, tipoLista);
     }
 
-    public static List<HistoriaClinicaDTO> fromJsonListHistoriaClinicaDTO(String json, Class<HistoriaClinicaDTO> historiaClinicaDTOClass) {
+    public static List<HistoriaClinicaDTO> fromJsonListHistoriaClinicaDTO(String json) {
         Type tipoLista = new TypeToken<List<HistoriaClinicaDTO>>() {
         }.getType();
         return gson.fromJson(json, tipoLista);
     }
 
-    public static List<RutaAtencionDTO> fromJsonListRutaAtencionDTO(String json, Class<RutaAtencionDTO> RutaAtencionDTOClass) {
+    public static List<RutaAtencionDTO> fromJsonListRutaAtencionDTO(String json) {
         Type tipoLista = new TypeToken<List<RutaAtencionDTO>>() {
         }.getType();
         return gson.fromJson(json, tipoLista);
     }
 
-    public static List<AreaOcurrenciaDTO> fromJsonListAreaOcurrenciaDTO(String json, Class<AreaOcurrenciaDTO> AreaOcurrenciaDTOClass) {
+    public static List<AreaOcurrenciaDTO> fromJsonListAreaOcurrenciaDTO(String json) {
         Type tipoLista = new TypeToken<List<AreaOcurrenciaDTO>>() {
         }.getType();
         return gson.fromJson(json, tipoLista);
-
     }
 
-    public static List<EapbDTO> fromJsonListEapbDTO(String json, Class<EapbDTO> EapbDTOClass) {
+    public static List<EapbDTO> fromJsonListEapbDTO(String json) {
         Type tipoLista = new TypeToken<List<EapbDTO>>() {
         }.getType();
         return gson.fromJson(json, tipoLista);
     }
 
+
+    public static List<PacienteDTO> fromJsonListPacienteDTO(String json) {
+        Type tipoLista = new TypeToken<List<PacienteDTO>>() {
+        }.getType();
+        return gson.fromJson(json, tipoLista);
+    }
+
+    public static List<UsuarioDTO> fromJsonListUsuarioDTO(String json) {
+        Type tipoLista = new TypeToken<List<UsuarioDTO>>() {
+        }.getType();
+        return gson.fromJson(json, tipoLista);
+    }
+
+    public static List<ReporteDTO> fromJsonListReporteDTO(String json) {
+        Type tipoLista = new TypeToken<List<UsuarioDTO>>() {}.getType();
+        return gson.fromJson(json, tipoLista);
+    }
 
 }
