@@ -1,8 +1,8 @@
 package mt.mentalistFrontend.Util;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import mt.mentalistFrontend.Modelo.DTO.CasoDTO;
-import mt.mentalistFrontend.Modelo.DTO.DiagnosticoEspecificoDTO;
+import mt.mentalistFrontend.Modelo.DTO.*;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -30,5 +30,36 @@ public class JsonUtils {
         }.getType();
         return gson.fromJson(json, tipoLista);
     }
-}
 
+    public static List<CursoVidaDTO> fromJsonListCursoVidaDTO(String json) {
+        Type tipoLista = new TypeToken<List<CursoVidaDTO>>() {
+        }.getType();
+        return gson.fromJson(json, tipoLista);
+    }
+
+    public static List<HistoriaClinicaDTO> fromJsonListHistoriaClinicaDTO(String json, Class<HistoriaClinicaDTO> historiaClinicaDTOClass) {
+        Type tipoLista = new TypeToken<List<HistoriaClinicaDTO>>() {
+        }.getType();
+        return gson.fromJson(json, tipoLista);
+    }
+
+    public static List<RutaAtencionDTO> fromJsonListRutaAtencionDTO(String json, Class<RutaAtencionDTO> RutaAtencionDTOClass) {
+        Type tipoLista = new TypeToken<List<RutaAtencionDTO>>() {
+        }.getType();
+        return gson.fromJson(json, tipoLista);
+    }
+
+    public static List<AreaOcurrenciaDTO> fromJsonListAreaOcurrenciaDTO(String json, Class<AreaOcurrenciaDTO> AreaOcurrenciaDTOClass) {
+        Type tipoLista = new TypeToken<List<AreaOcurrenciaDTO>>() {
+        }.getType();
+        return gson.fromJson(json, tipoLista);
+
+    }
+
+    public static List<EapbDTO> fromJsonListEapbDTO(String json, Class<EapbDTO> EapbDTOClass) {
+        Type tipoLista = new TypeToken<List<EapbDTO>>() {
+        }.getType();
+        return gson.fromJson(json, tipoLista);
+    }
+
+    }

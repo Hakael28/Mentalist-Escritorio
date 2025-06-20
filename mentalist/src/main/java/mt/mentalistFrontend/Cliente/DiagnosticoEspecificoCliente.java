@@ -56,7 +56,7 @@ public class DiagnosticoEspecificoCliente {
         return JsonUtils.fromJson(repuesta.toString(), DiagnosticoEspecificoDTO.class);
     }
 
-    public static DiagnosticoEspecificoDTO obtenerDiagnosticoPorId(int idDiagnostico) throws Exception {
+    public static DiagnosticoEspecificoDTO guardarDiagnosticoPorId(int idDiagnostico) throws Exception {
         URL url = new URL(BASE_URL + "/" + idDiagnostico);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
