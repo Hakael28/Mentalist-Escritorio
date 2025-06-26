@@ -4,8 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
+
+import mt.mentalistFrontend.Cliente.Basicos.UsuarioCliente;
+import mt.mentalistFrontend.Modelo.DTO.Basicas.UsuarioDTO;
 import mt.mentalistFrontend.UI.Paneles.PanelAdministrador.Usuarios.InformacionUsuarioPanel;
 import mt.mentalistFrontend.UI.Paneles.PanelAdministrador.Usuarios.RegistroUsuarioPanel;
+import mt.mentalistFrontend.Util.AlertaUtils;
 
 public class UsuariosPanel extends javax.swing.JPanel {
 
@@ -14,7 +19,29 @@ public class UsuariosPanel extends javax.swing.JPanel {
     public UsuariosPanel() {
         initComponents();
         initStyles();
+        configurarTabla();
         cargarUsuarios();
+
+        TablaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (evt.getClickCount() == 2 && TablaUsuarios.getSelectedRow() != -1) {
+                    int fila = TablaUsuarios.getSelectedRow();
+
+                    UsuarioDTO usuario = new UsuarioDTO();
+                    usuario.setIdUsuario((int) modelo.getValueAt(fila, 0));
+                    usuario.setUsuario(modelo.getValueAt(fila, 1).toString());
+                    usuario.setNombre(modelo.getValueAt(fila, 2).toString());
+                    usuario.setIdUsuario((int) modelo.getValueAt(fila, 0));
+                    usuario.setCorreo(modelo.getValueAt(fila, 4).toString());
+                    usuario.setTelefono(modelo.getValueAt(fila, 5).toString());
+
+                    RegistroUsuarioPanel panel = new RegistroUsuarioPanel();
+                    panel.cargarUsuarioDesdeTabla(usuario);
+                    ShowJPanel(panel);
+                }
+            }
+        });
     }
 
     private void initStyles() {
@@ -39,32 +66,31 @@ public class UsuariosPanel extends javax.swing.JPanel {
         Bg.repaint();
     }
 
-    private void cargarUsuarios() {
-//        if (usuarioServicio == null) {
-//            System.err.println("No se ha inicializado el servicio");
-//            return;
-//        }
-//        modelo = (DefaultTableModel) TablaUsuarios.getModel();
-//        modelo.setRowCount(0);
-//
-//        var usuarios = this.usuarioServicio.listarUsuarios();
-//
-//        if (usuarios == null || usuarios.isEmpty()) {
-//            System.err.println("No se encontraron casos en la base de datos");
-//            return;
-//        }
-//
-//        usuarios.forEach(usuario -> {
-//            Object[] renglonUsuario = {
-//                usuario.getIdUsuario(),
-//                usuario.getUsuario(),
-//                usuario.getRol(),
-//                usuario.getCorreo(),
-//                usuario.getTelefono()
-//            };
-//            modelo.addRow(renglonUsuario);
-//        });
+    private void configurarTabla() {
+        modelo = new DefaultTableModel(new String[]{"ID", "Usuario","Nombre", "Rol", "Correo", "Teléfono"}, 0);
+        TablaUsuarios.setModel(modelo);
     }
+
+    private void cargarUsuarios() {
+        try {
+            modelo.setRowCount(0);
+            List<UsuarioDTO> usuarios = UsuarioCliente.obtenerUsuarios();
+            for (UsuarioDTO usuario : usuarios) {
+                modelo.addRow(new Object[]{
+                        usuario.getIdUsuario(),
+                        usuario.getUsuario(),
+                        usuario.getNombre(),
+                        usuario.getRol(),
+                        usuario.getCorreo(),
+                        usuario.getTelefono()
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            AlertaUtils.mostrarError("Error al cargar los usuarios: " + e.getMessage());
+        }
+    }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

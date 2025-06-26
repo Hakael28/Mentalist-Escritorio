@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 
 import mt.mentalistFrontend.UI.Paneles.PanelAdministrador.Basicas.UsuariosPanel;
+import mt.mentalistFrontend.Util.SesionUsuario;
 
 public class PanelAdministrador extends javax.swing.JFrame {
 
@@ -22,10 +23,8 @@ public class PanelAdministrador extends javax.swing.JFrame {
         initComponents();
         initStyles();
         setDate();
+        usuarioActual();
         initContent();
-        this.setMinimumSize(new Dimension(1020, 640));
-        this.setSize(1020, 640);
-        this.setLocationRelativeTo(null);
     }
 
     private void initStyles() {
@@ -58,7 +57,8 @@ public class PanelAdministrador extends javax.swing.JFrame {
         tiempo.setText(now.format(DateTimeFormatter.ofPattern("'Hoy es' EEEE dd 'de' MMMM 'de' yyyy", spanishLocale)));
     }
 
-    public void usuarioActual(String nombreUsuario) {
+    public void usuarioActual() {
+        Bienvenida.setText("Bienvenido(a), " + SesionUsuario.getNombre());
     }
 
     private void initContent() {
@@ -337,7 +337,11 @@ public class PanelAdministrador extends javax.swing.JFrame {
         ShowJPanel(new EstadisticaPanel());
     }//GEN-LAST:event_EstadisticaBTNActionPerformed
 
-    private void SalirBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBTNActionPerformed
+    private void SalirBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBTNActionPerformedS
+     SesionUsuario.establecerSesion(null,null,null,null, null,null,null);
+
+     this.dispose();
+     new Ingreso().setVisible(true);
     }//GEN-LAST:event_SalirBTNActionPerformed
 
     private void UsuarioBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioBTNActionPerformed

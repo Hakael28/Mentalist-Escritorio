@@ -2,11 +2,11 @@ package mt.mentalistFrontend.Util;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import mt.mentalistFrontend.Modelo.DTO.*;
 import mt.mentalistFrontend.Modelo.DTO.Basicas.*;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Map;
 
 public class JsonUtils {
 
@@ -15,6 +15,11 @@ public class JsonUtils {
     // Serializar
     public static String toJson(Object objeto) {
         return gson.toJson(objeto);
+    }
+
+    public static List<Map<String, String>> fromJsonListMap(String json) {
+        Type tipoListaMap = new TypeToken<List<Map<String, String>>>() {}.getType();
+        return gson.fromJson(json, tipoListaMap);
     }
 
     // Deserializar un solo objeto

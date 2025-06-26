@@ -26,6 +26,6 @@ public class ReporteDTO {
 
     @NotNull(message = "La fecha del reporte es obligatoria")
     @PastOrPresent(message = "La fecha del reporte no puede ser futura")
-    private LocalDate fecha;
+    private String fecha;
 }
 

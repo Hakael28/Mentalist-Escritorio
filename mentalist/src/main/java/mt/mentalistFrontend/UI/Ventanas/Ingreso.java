@@ -254,10 +254,15 @@ public class Ingreso extends javax.swing.JFrame {
         LoginResponseDTO loginResponse = AuthCliente.login(loginRequest);
 
         //Guardar sesion
-        SesionUsuario.setToken(loginResponse.getToken());
-        SesionUsuario.setRol(loginResponse.getRol());
-        SesionUsuario.setIdUsuario(loginResponse.getIdUsuario());
-
+        SesionUsuario.establecerSesion(
+                loginResponse.getToken(),
+                loginResponse.getRol(),
+                loginResponse.getNombre(),
+                loginResponse.getIdUsuario(),
+                loginResponse.getTelefono(),
+                loginResponse.getCorreo(),
+                loginResponse.getUsuario()
+        );
         AlertaUtils.mostrarExito("Inicio de sesion exitoso. Bienvenido, "+loginResponse.getRol());
 
         //Abrir ventana segun rol

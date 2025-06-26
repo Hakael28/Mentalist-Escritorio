@@ -1,12 +1,22 @@
 package mt.mentalistFrontend.UI.Paneles.General;
 
+import mt.mentalistFrontend.Cliente.Basicos.ReporteCliente;
+import mt.mentalistFrontend.Modelo.DTO.Basicas.ReporteDTO;
+import mt.mentalistFrontend.Modelo.Enum.TipoReporte;
+import mt.mentalistFrontend.Util.AlertaUtils;
+import mt.mentalistFrontend.Util.FechaUtils;
+import mt.mentalistFrontend.Util.SesionUsuario;
+
 import java.awt.Color;
+import java.time.LocalDate;
 
 public class ReportePanel extends javax.swing.JPanel {
 
     public ReportePanel() {
         initComponents();
         initStyles();
+        cargarDatosIniciales();
+        configurarEventos();
     }
 
     private void initStyles() {
@@ -26,10 +36,40 @@ public class ReportePanel extends javax.swing.JPanel {
         Comment.setForeground(Color.BLACK);
         SetFecha.putClientProperty("FlatLaf.style", "font: 13 $h4.font");
         SetFecha.setForeground(Color.BLACK);
+        SetFecha.setEditable(false);
         SetIdUsuario.putClientProperty("FlatLaf.style", "font: 13 $h4.font");
         SetIdUsuario.setForeground(Color.BLACK);
+        SetIdUsuario.setEditable(false);
         GuardarBTN.putClientProperty("FlatLaf.style", "font: 13 $h4.font");
         GuardarBTN.setForeground(Color.white);
+    }
+    private void cargarDatosIniciales(){
+        SetIdUsuario.setText(String.valueOf(SesionUsuario.getIdUsuario()));
+        SetFecha.setText(FechaUtils.obtenerFechaActual());
+    }
+    private void configurarEventos(){
+        GuardarBTN.addActionListener(e -> guardarReporte());
+    }
+    private void guardarReporte(){
+        try {
+            LocalDate fecha = LocalDate.now();
+
+            String tipoSeleccionado = (String) TipoSelect.getSelectedItem();
+            TipoReporte tipo = TipoReporte.valueOf(tipoSeleccionado);
+
+            ReporteDTO dto = new ReporteDTO();
+            dto.setIdUsuario(SesionUsuario.getIdUsuario());
+            dto.setFecha(LocalDate.now().toString());
+            dto.setTipoReporte(tipo);
+            dto.setDescripcion(Comment.getText());
+
+            ReporteCliente.agregarReporte(dto);
+            AlertaUtils.mostrarExito("Reporte guardado correctamente.");
+            Comment.setText("");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            AlertaUtils.mostrarError("Error al guardar el reporte: " + ex.getMessage());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -78,11 +118,6 @@ public class ReportePanel extends javax.swing.JPanel {
         SetIdUsuario.setEditable(false);
         SetIdUsuario.setBackground(new java.awt.Color(188, 234, 255));
         SetIdUsuario.setBorder(null);
-        SetIdUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SetIdUsuarioActionPerformed(evt);
-            }
-        });
 
         SetFecha.setBackground(new java.awt.Color(188, 234, 255));
         SetFecha.setBorder(null);
@@ -174,10 +209,6 @@ public class ReportePanel extends javax.swing.JPanel {
             .addComponent(Bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void SetIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetIdUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SetIdUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
